@@ -44,7 +44,7 @@ Example 'tasks.json' file to build project in monorepo with lerna
 * `display` `<DisplayType | DisplayConfig>` File names presentation type
 * `output` `<DisplayType | DisplayConfig>` Output presentation type
 
-`DisplayType`: 
+`DisplayType`:
 * `none`returns `undefined`
 * `fileName` returns file name (ex. _readme.md_)
 * `filePath` returns absolute file path (ex _c:/Projects/proj/info/readme.md_)

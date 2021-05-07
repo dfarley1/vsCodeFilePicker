@@ -2,10 +2,14 @@ import * as vscode from 'vscode';
 import { Args } from './Args';
 import { PickCommand } from './PickCommand';
 
-export function activate(context: vscode.ExtensionContext) {
-    let disposable = vscode.commands.registerCommand('filePicker.pick', (args: Args) => new PickCommand(args).Invoke());
-
-    context.subscriptions.push(disposable);
+function pick(args: Args) {
+    return new PickCommand(args).Invoke();
 }
 
-export function deactivate() {}
+export function activate(context: vscode.ExtensionContext) {
+    context.subscriptions.push(
+        vscode.commands.registerCommand('filePicker.pick', pick)
+    );
+}
+
+export function deactivate() { }

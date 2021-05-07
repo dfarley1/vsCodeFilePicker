@@ -1,4 +1,6 @@
 {
     "editor.renderWhitespace": "all",
     "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
 }

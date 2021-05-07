@@ -33,7 +33,7 @@ export class PickCommand {
         }
         return current;
     }
-    
+
     private getFilesAsync(pattern: string): Promise<Array<string>> {
         return new Promise<Array<string>>((resolve, reject) => {
             glob(pattern, (err, files) => {
