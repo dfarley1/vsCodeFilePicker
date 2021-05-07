@@ -3,9 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as glob from 'glob';
 
-import { DisplayType } from './DisplayType';
-import { PresentationConfig } from './PresentationConfig';
-import { Args } from './Args';
+import { Args, DisplayType, PresentationConfig } from './Args';
 
 export class PickCommand {
     private readonly _args: Args;

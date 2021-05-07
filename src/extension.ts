@@ -8,7 +8,7 @@ function pick(args: Args) {
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
-        vscode.commands.registerCommand('filePicker.pick', pick)
+        vscode.commands.registerCommand('filePicker.pick', pick),
     );
 }
 
