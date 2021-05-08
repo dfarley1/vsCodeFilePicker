@@ -23,8 +23,14 @@ export type DisplayConfig = DisplayType | PresentationConfig & {
     detail: PresentationConfig;
 };
 
+export type CommandConfig = {
+    cwd: string | undefined;
+    command: string;
+};
+
 export interface Args {
     masks: string | string[];
     display: DisplayConfig;
     output: PresentationConfig;
+    command: CommandConfig;
 }

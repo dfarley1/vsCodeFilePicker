@@ -2,7 +2,7 @@
 
 File picker is simple tool, helping you to select file while running vs code task.
 
-## Usage
+# filePicker.pick
 Example 'tasks.json' file to build project in monorepo with lerna
 ```json
 {
@@ -64,3 +64,48 @@ Example 'tasks.json' file to build project in monorepo with lerna
 * `json` `<string>` Path to property of json file
 * `description` `<PresentationConfig>` Rule to get file description (to show in vs code picker)
 * `detail` `<PresentationConfig>` Rule to get file details (to show in vs code picker)
+
+
+# filePicker.pickCommand
+This command operates similarly to [`filePicker.pick`](#filePicker.pick) except the resulting file name or property can be used in a shell command for further processing. For example, the user can select a file to test and use a shell command to generate appropriate debugging args for the test.
+
+## Usage
+Example `launch.json` which uses a shell script to generate args for a user-specified test.
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug File",
+            "request": "launch",
+            "program": "process_to_debug",
+            "args": ["${input:getDebugArgs}"],
+        },
+    ],
+    "inputs": [
+        {
+            "id": "getDebugArgs",
+            "type": "command",
+            "command": "filePicker.pickCommand",
+            "args": {
+                "masks": "**/*.test",
+                "display": "filePath",
+                "output": "filePath",
+                "command": {
+                    "command": "generate_args.sh ${file}",
+                    "cwd": ".",
+                }
+            }
+        }
+    ]
+}
+
+```
+
+## Arguments
+Same as `filePicker.pick` except with the addition of a `command` section:
+* `command` `<CommandConfig>`
+
+`CommandConfig`:
+* `command` `string` shell command to be run. No variable substitution is currently supported except for `"${file}"` being replaced with the results of the file pick.
+* `cwd` `string` Directory to execute the command in.
